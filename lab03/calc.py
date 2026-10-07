@@ -8,3 +8,6 @@ print(d)
 
 t = a*b
 print(t)
+
+r = a/b
+print(r)
