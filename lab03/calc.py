@@ -8,3 +8,8 @@ print(d)
 
 t = a*b
 print(t)
+
+if b != 0:
+    print(a/b)
+else:
+    print('Деление на 0')
