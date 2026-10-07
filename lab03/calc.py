@@ -6,3 +6,5 @@ print(c)
 d = a - b
 print(d)
 
+t = a*b
+print(t)
