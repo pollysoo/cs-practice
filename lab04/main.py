@@ -1,27 +1,27 @@
 import sys
+
 from stats import average_by_city, read_valid, warmest_city
 
-lines = sys.stdin.read().splitlines()
-records = read_valid(lines)
-bad = 0
 
-for line in lines:
-    if line.strip() == "":
-        continue
+def main() -> None:
+    lines = sys.stdin.read().splitlines()
 
-    try:
-        from stats import parse_record
-        parse_record(line)
-    except ValueError:
-        bad += 1
+    records = read_valid(lines)
 
-averages = average_by_city(records)
-city = warmest_city(records)
+    non_empty = [ln for ln in lines if ln.strip()]
 
-print(len(records))
-print(bad)
+    skipped = len(non_empty) - len(records)
 
-if city == "":
-    print("0.0")
-else:
-    print(f"{averages[city]:.1f}")
+    averages = average_by_city(records)
+    best = warmest_city(records)
+
+    print(len(records))
+    print(skipped)
+    if best:
+        print(f"{averages[best]:.1f}")
+    else:
+        print("0.0")
+
+
+if __name__ == "__main__":
+    main()
